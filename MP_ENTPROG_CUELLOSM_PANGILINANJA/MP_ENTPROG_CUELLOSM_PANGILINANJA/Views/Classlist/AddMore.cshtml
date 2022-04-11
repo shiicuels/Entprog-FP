@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models;
+@model Classlist
+@*@{
+    Classlist head = new Classlist();
+}*@
+
+<hr />
+<h4>Enroll Students</h4>
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <input type="hidden" id="ClasslistID" name="ClasslistID" value="@Model.ID" />
+        <b> Students</b>
+        @{
+            Html.RenderPartial("_StudentMoreDropDown");
+        }
+    </div>
+</div>
+
+<br />
+
+<div class="pull-right">
+    <button type="button" id="btnAdd" class="btn btn-info btn-sm">
+        <i class="fa fa-plus"></i> Add Student
+    </button>
+</div>
+
+<script>
+            $("#btnAdd").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddMoreStudent", "ClassList")',
+                    data: {
+                        'ClasslistID': $("#txtClasslistID").val(),
+                        'Student': $("#txtStudents option:selected").val()
+                    },
+                    dataType: "html",
+                    success: function (result) {
+                        $("#RefreshPanel").html(result);
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            });
+</script>
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-15">
+        <div id="RefreshPanel">
+            <div class="alert alert-info">
+                You have not yet enrolled any student in this class.
+            </div>
+        </div>
+    </div>
+</div>
+

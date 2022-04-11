@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Student>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Home</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Table name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Go to List
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>Students</td>
+                <td>Cheer Up! This table will show the list of all students with record.</td>
+                <td>
+                    <form action="~/Student/List" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Subjects</td>
+                <td>You look Soooo Good. This table will show the list of all subjects.</td>
+                <td>
+                    <form action="~/Subject/List" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Faculties</td>
+                <td>Isn't it a nice day to smile? This table will show list of all faculty members in this school</td>
+                <td>
+                    <form action="~/Faculty/List" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Classlists</td>
+                <td>---------------------------------------------</td>
+                <td>
+                    <form action="~/Classlist/List" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+    </tbody>
+</table>

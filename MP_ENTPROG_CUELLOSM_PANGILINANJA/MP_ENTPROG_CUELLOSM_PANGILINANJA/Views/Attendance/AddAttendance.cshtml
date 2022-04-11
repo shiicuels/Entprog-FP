@@ -1,0 +1,74 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Attendance
+
+@{
+    ViewBag.Title = "AddAttendance";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    List<ClasslistDetail> list = new List<ClasslistDetail>();
+    list = (List<ClasslistDetail>)Session["Attendance"];
+}
+
+<h2>Add Attendance</h2>
+
+@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Attendance</h4>
+            <hr />
+            <input type="hidden" name="ClasslistID" value="@list[0].ClasslistID" />
+
+            <div class="form-group">
+                <b class="control-label col-md-2">Date</b>
+                <div class="col-md-10">
+                    <input type="datetime-local" value="" required name="Date" class="form-control" />
+                </div>
+            </div>
+
+            <hr />
+            <h4>Students Attendee</h4>
+            <div class="row">
+                <div class="col-md-offset-2">
+                    @{
+                        Html.RenderPartial("_FacultyStudentsDropDown");
+                    }
+                </div>
+
+            </div>
+            @*<br />
+            <div class="pull-right">
+                <button type="button" id="btnAdd" class="btn btn-info btn-sm">
+                    Update Status
+                </button>
+
+            </div>*@
+
+            @*<br /><br />
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2">
+                    <div id="ContactPanel">
+                        <div class="alert alert-info">
+                            You have not added any yet.
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input id="btnSubmit" disabled type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+}
+
+
+<a href="javascript:history.back()" class="btn btn-link">
+    Back to Previous Page
+</a>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

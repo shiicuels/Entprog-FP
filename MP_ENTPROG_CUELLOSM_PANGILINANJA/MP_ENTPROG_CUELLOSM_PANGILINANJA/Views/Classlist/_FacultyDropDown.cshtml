@@ -1,0 +1,16 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model Faculty
+@{
+    Faculty obj = new Faculty();
+    List<Faculty> list = obj.ViewAllFaculties();
+}
+
+    <select id="Faculty" name="Faculty" class="form-control">
+        <option value="" disabled selected hidden>Select Faculty</option>
+        @{
+            foreach (Faculty item in list)
+            {
+                <option value="@item.Firstname @item.Lastname"> @item.Firstname @item.Lastname</option>
+            }
+        }
+    </select>

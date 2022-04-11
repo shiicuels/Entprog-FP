@@ -1,0 +1,48 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Attendance
+
+@{
+    ViewBag.Title = "Void";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    Classlist cl = (Classlist)Session["ClasslistHeader"];
+}
+
+<h3><b>Attendance</b></h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Void this Attendance?</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClasslistID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClasslistID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"  } })
+                @Html.ValidationMessageFor(model => model.ClasslistID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Void" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to My Attendance", "ViewAttendances", new { id=cl.ID, Controller = "Classlist" })
+</div>

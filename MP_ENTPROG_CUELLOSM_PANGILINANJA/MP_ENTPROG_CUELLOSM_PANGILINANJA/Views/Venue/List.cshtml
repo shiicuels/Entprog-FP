@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Venue>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Venues</h2>
+
+<!--Search-->
+<div class="pull-right">
+    <form method="post" action="~/Venue/Search">
+        Venue Name:
+        <input type="text" name="VenueName" value="" placeholder="Enter Here!" />
+        Building:
+        <input type="text" name="Building" value="" placeholder="Enter Here!" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<br />
+<h4>
+    @Html.ActionLink("Click to here to Add!", "Add")
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VenueName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.ClasslistDetail>
+
+@{
+    ViewBag.Title = "ManageStudents";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Manage Students</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClasslistID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClasslistID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student)
+            </td>
+            <td>
+                <form action="~/Classlist/DeleteStudent" method="post">
+                    <input type="hidden" name="ID" value="@item.ID" />
+                    <input type="hidden" name="Student" value="@item.Student" />
+                    <input type="hidden" name="ClasslistID" value="@item.ClasslistID" />
+                    <button type="submit" class="btn btn-link">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+<h4>Enroll Students</h4>
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <b> Students</b>
+        @{
+            Html.RenderPartial("_StudentDropDown");
+        }
+    </div>
+</div>
+

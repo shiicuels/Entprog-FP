@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="alert alert-danger clearfix">
+                    <h4>@Model.Source</h4>
+                    <hr />
+                    <p>@Model.Message</p>
+                    <br />
+                    <div class="pull-right">
+                        <a href="javascript:history.back()" class="btn btn-link">
+                            Back to Previous Page
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

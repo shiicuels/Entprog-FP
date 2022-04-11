@@ -1,0 +1,34 @@
+﻿@*Include css*@
+<link href="~/Content/DataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@*Add an id to the table tag*@
+<table id="SampleTable" class="table">
+    @*Insert <thead></thead> tag*@
+    <thead>
+        <tr>
+            <th>Column Heading 1</th>
+            <th>Column Heading 2</th>
+            <th>Column Heading N</th>
+        </tr>
+    </thead>
+    @*Insert <tbody></tbody> tag*@
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+@*Include script*@
+<script src="~/Scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+
+@*Add jquery codes to activate DataTables.Net*@
+@*SampleTable gets activated as a dataTable as soon as the document is ready*@
+@*# means you are calling the id of the html element*@
+<script>
+    $(document).ready(function () {
+        $('#SampleTable').DataTable();
+    });
+</script>

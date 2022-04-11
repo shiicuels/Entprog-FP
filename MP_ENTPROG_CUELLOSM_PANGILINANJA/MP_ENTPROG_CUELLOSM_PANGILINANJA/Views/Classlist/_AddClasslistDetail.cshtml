@@ -1,0 +1,21 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model Classlist
+
+<table class="table table-striped table-bordered table-hover table-sm">
+    <thead>
+        <tr>
+            <th style="text-align: center">
+                Student's Name
+            </th>
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (ClasslistDetail dtl in Model.ClasslistItems)
+        {
+            <tr>
+                <td style="text-align: center">@dtl.Student</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

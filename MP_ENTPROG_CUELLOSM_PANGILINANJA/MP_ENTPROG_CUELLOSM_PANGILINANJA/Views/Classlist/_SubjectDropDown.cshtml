@@ -1,0 +1,16 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model Subject
+@{
+    Subject obj = new Subject();
+    List<Subject> list = obj.ViewAllSubject();
+}
+
+    <select id="Subject" name="Subject" class="form-control">
+        <option value="" disabled selected hidden>Select Subject</option>
+        @{
+            foreach (Subject item in list)
+            {
+                <option value="@item.SubjectCode"> @item.SubjectCode</option>
+            }
+        }
+    </select>

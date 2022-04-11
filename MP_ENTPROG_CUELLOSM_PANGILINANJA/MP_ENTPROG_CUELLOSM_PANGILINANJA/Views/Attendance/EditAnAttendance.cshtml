@@ -1,0 +1,46 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.AttendanceDetail>
+
+@{
+    ViewBag.Title = "EditAnAttendance";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    Classlist cl = (Classlist)Session["ClasslistHeader"];
+    Attendance att = (Attendance)Session["AttendanceDate"];
+}
+
+<h3><b>My Attendance</b></h3>
+<h4>@cl.Subject @cl.Venue - @cl.Faculty (@att.Date.ToLongDateString())</h4>
+<i class="control-label">Select a student to edit his/her status</i>
+<br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Status", "EditStatus", new { id = item.ID }) 
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to My Attendance", "ViewAttendances", new { id = cl.ID, Controller = "Classlist" })
+</div>

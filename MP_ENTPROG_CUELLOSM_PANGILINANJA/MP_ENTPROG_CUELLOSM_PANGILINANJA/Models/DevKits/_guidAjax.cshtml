@@ -1,0 +1,15 @@
+﻿<script>
+    var formdata = $("#FormID").serialize();
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("Action", "Controller")',
+        data: formdata,
+        dataType: "html",
+        success: function (result) {
+            $("#divID").html(result);
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+</script>

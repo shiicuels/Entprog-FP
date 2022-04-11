@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Venue>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Search</h2>
+<a href="~/Venue/List" class="btn btn-info">
+    <i class="fa fa-user"></i>
+    Go back
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VenueName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building)
+            </td>
+        </tr>
+    }
+
+</table>

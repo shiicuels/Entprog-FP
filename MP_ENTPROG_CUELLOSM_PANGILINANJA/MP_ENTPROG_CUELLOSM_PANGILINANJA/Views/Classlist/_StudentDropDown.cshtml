@@ -1,0 +1,57 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model Student
+@{
+    Student obj = new Student();
+    List<Student> list = obj.ViewAllStudents();
+}
+
+<select id="txtStudents" name="Student" class="form-control">
+    <option value="" disabled selected hidden>Select Student</option>
+    @{
+        foreach (Student item in list)
+        {
+            <option value="@item.Firstname @item.Lastname"> @item.Firstname @item.Lastname</option>
+        }
+    }
+</select>
+<br />
+
+<div class="pull-right">
+    <button type="button" id="btnAdd" class="btn btn-info btn-sm">
+        <i class="fa fa-plus"></i> Add Student
+    </button>
+</div>
+
+<script>
+            $("#btnAdd").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddStudent", "ClassList")',
+                    data: {
+                        'Student': $("#txtStudents option:selected").val(),
+                    },
+                    dataType: "html",
+                    success: function (result) {
+                        $("#RefreshPanel").html(result);
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            });
+</script>
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-15">
+        <div id="RefreshPanel">
+            <div class="alert alert-info">
+                You have not yet enrolled any student in this class.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

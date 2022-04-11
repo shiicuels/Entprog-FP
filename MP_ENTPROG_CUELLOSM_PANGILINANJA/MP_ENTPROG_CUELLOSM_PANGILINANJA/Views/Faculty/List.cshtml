@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Faculty>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Faculty</h2>
+
+<!--Search-->
+<table class="pull-right">
+
+    <tr>
+        <th>
+            <form method="post" action="~/Faculty/Search">
+                Lastname:
+                <input type="text" name="Lastname" value="" placeholder="Lastname" />
+                Firstname:
+                <input type="text" name="Firstname" value="" placeholder="Firstname" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </th>
+    </tr>
+    <tr class="pull-right">
+        <th>
+            <form method="post" action="~/Faculty/SearchID">
+                <p></p>ID:
+                <input type="number" name="ID" value="" placeholder="Enter ID" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </th>
+    </tr>
+</table>
+<br />
+<h4>
+    @Html.ActionLink("Click to here to Add!", "Add")
+</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

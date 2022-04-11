@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Subject>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Subjects</h2>
+
+<!--Search-->
+<div class="pull-right">
+    <form method="post" action="~/Subject/Search">
+        Subject Code:
+        <input type="text" name="SubjectCode" value="" placeholder="Enter Here!" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<br />
+<h4>
+    @Html.ActionLink("Click to here to Add!", "Add")
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Faculty>
+
+@{
+    ViewBag.Title = "SearchID";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+<a href="~/User/Home" class="btn btn-link">
+      HOME
+</a>
+
+<h2>Faculty</h2>
+
+<a href="~/Faculty/List" class="btn btn-info">
+    <i class="fa fa-user"></i>
+    Go back
+</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,16 @@
+﻿@using MP_ENTPROG_CUELLOSM_PANGILINANJA.Models
+@model Venue
+@{ 
+    Venue obj = new Venue();
+    List<Venue> list = obj.ViewAllVenue();
+}
+
+    <select id="Venue" name="Venue" class="form-control">
+        <option value="" disabled selected hidden>Select Venue</option>
+        @{
+            foreach (Venue item in list)
+            {
+                <option value="@item.VenueName @item.Building"> @item.VenueName | @item.Building</option>
+            }
+        }
+    </select>

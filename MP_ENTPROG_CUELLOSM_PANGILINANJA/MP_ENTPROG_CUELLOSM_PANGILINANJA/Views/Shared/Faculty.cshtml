@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Student>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Home</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Features
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    My Classlists
+                </td>
+                <td>Show all the classlists assigned to me by the Chairperson, Yey! Btw, You will add attendance here</td>
+                <td>
+                    <form action="~/Classlist/ListFaculty" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Faculty class list
+                </td>
+                <td>"REPORT" that pertains to all classes assigned to mine, Yes Me!</td>
+                <td>
+                    <form action="#" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Attendance Summary
+                </td>
+                <td>"REPORT" to track my student's attendance!</td>
+                <td>
+                    <form action="#" method="post">
+                        <button type="submit" class="btn btn-info">
+                            Go
+                        </button>
+                    </form>
+                </td>
+            </tr>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Classlist
+
+@{
+    ViewBag.Title = "AddMoreStudent";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>AddMoreStudent</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Classlist</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+    @{
+        Html.RenderPartial("_StudentMoreDropDown");
+    }
+
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

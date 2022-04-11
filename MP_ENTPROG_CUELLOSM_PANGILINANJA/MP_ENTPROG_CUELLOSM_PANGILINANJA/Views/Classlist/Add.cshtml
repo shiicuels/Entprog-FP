@@ -1,0 +1,87 @@
+﻿@model MP_ENTPROG_CUELLOSM_PANGILINANJA.Models.Classlist
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2>Add</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Classlist</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClassDays, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select required name="ClassDays" class="form-control">
+                <option value="" disabled selected hidden>Select schedule days</option>
+                <option value="M">Monday</option>
+                <option value="T">Tueday</option>
+                <option value="W">Wednesday</option>
+                <option value="H">Thursday</option>
+                <option value="F">Friday</option>
+                <option value="S">Saturday</option>
+                <option value="MW">Monday & Wednesday</option>
+                <option value="TH">Tuesday & Thursday</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.ClassDays, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Venue, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                Html.RenderPartial("_VenueDropDown");
+            }
+            @Html.ValidationMessageFor(model => model.Venue, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                Html.RenderPartial("_SubjectDropDown");
+            }
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Faculty, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                Html.RenderPartial("_FacultyDropDown");
+            }
+            @Html.ValidationMessageFor(model => model.Faculty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <hr />
+    <h4>Enroll Students</h4>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-2">
+            <b> Students</b>
+            @{
+                Html.RenderPartial("_StudentDropDown");
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "List")
+</div>
